@@ -2,7 +2,7 @@
   "name": "SONN Mail Template",
   "description": "E-Mail Formatvorlage beim Schreiben einer E-Mail",
   "author": "SONN",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "applications": {
     "gecko": {
       "id": "MailTemplate@SONN",
@@ -17,16 +17,6 @@
     "scripts": [
       "background.js"
     ]
-  },
-  "experiment_apis": {
-    "LegacyPrefs": {
-      "schema": "api/legacyPrefs.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["LegacyPrefs"]],
-        "script": "api/legacyPrefs.js"
-      }
-    }
   },
   "manifest_version": 2
 }
