@@ -22,24 +22,23 @@ function updateCSSblock(node, id) {
 
 async function insertCSS() {
     console.log("function insertCSS: adding sonn-css style")
-    prefs = await messenger.storage.local.get({
-        css: [],
-    });
-    let SonnCss = prefs.css;
-    if (SonnCss == null || SonnCss.length === 0) {
-        console.log("ERROR: SonnCss not set");
+    var managedStorage = await browser.storage.managed.get('Style')
+    var managedStorageConfig = managedStorage.Style;
+
+    if (managedStorageConfig == null || managedStorageConfig.length === 0) {
+        console.log("ERROR: No Configuration was found, please add a configuration to the policies.json");
         return
     }
-    console.log("cfg settings: ", SonnCss);
+    console.log("CSS settings: ", managedStorageConfig);
 
-    SonnCss = ' '.repeat(15) + SonnCss.split(";").join(";\n" + ' '.repeat(14));
+    managedStorageConfig = ' '.repeat(15) + managedStorageConfig.split(";").join(";\n" + ' '.repeat(14));
     console.log("document: ", document);
 
     let cssStyle = "body,p,li,td,th,pre,h1,h2,h3,h4,h5,h6,address,sub," +
         "sup,cite,abbr,acronym,code,samp,var,tt,.sonn-css {\n";
 
     // .slice to get rid of 4 whitespaces
-    cssStyle = "\n" + ' '.repeat(10) + cssStyle + SonnCss.slice(0, -4) + "}\n" + ' '.repeat(4);
+    cssStyle = "\n" + ' '.repeat(10) + cssStyle + managedStorageConfig.slice(0, -4) + "}\n" + ' '.repeat(4);
 
     let style = document.createElement('style');
     style.textContent = cssStyle;
