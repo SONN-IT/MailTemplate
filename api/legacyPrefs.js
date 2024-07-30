@@ -31,7 +31,7 @@
  var { ExtensionCommon } = ChromeUtils.import(
     "resource://gre/modules/ExtensionCommon.jsm"
 );
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+// var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 
 var LegacyPrefs = class extends ExtensionCommon.ExtensionAPI {
